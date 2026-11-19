@@ -76,13 +76,6 @@ Then visit:
 http://localhost:8080/index.html
 ```
 
-### Method 3: Deploy to Vercel / Netlify / GitHub Pages
-Because the application is static HTML, CSS, and JavaScript:
-1. **GitHub Pages**: Push to GitHub and enable GitHub Pages in repository settings pointing to root `/`.
-2. **Vercel**: Run `vercel deploy` or import the repository on [vercel.com](https://vercel.com). Vercel serves the static HTML site out-of-the-box with global CDN caching.
-
----
-
 ## 📁 Project Structure
 
 ```text
