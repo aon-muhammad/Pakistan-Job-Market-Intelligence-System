@@ -1,5 +1,5 @@
 # CareerML — AI-Powered Pakistan Tech Career Intelligence Platform
-
+Deployed App Link: careerml.vercel.app
 CareerML is a modern career intelligence and machine learning analytics platform tailored specifically for the Pakistani tech ecosystem. Built using exploratory data analysis and predictive models trained on 2,140+ tech job postings in Pakistan (`pakistan_tech_jobs_final.csv`), CareerML delivers salary predictions, hiring likelihood estimates, job recommendations, persona classifications, and a clean, symbol-free AI career coach.
 
 The web application is implemented in **HTML5, CSS3, and Bootstrap 5.3.9** using local vendor assets (`bootstrap-5.3.9-dist`), requiring no build tools or package managers.
@@ -105,6 +105,5 @@ $$\text{Expected Salary} = \beta_0 + \sum_{i=1}^{n} \beta_i X_i$$
 ### 2. Hiring Likelihood Model
 $$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
 - Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
-Deployed App Link:careerml.vercel.app
 $$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
 - Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
