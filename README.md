@@ -61,21 +61,6 @@ All predictive capabilities in CareerML are directly mapped to the repository's 
 
 ---
 
-## 🚀 How to Run
-
-### Method 1: Open Directly in Browser (No Server Required)
-Simply double-click or open [index.html](file:///d:/fall%202026/IDS-PROJECT-Final/IDS-PROJECT/index.html) in Google Chrome, Microsoft Edge, Firefox, or Safari. All models and assets run client-side.
-
-### Method 2: Run with Python Built-in Server
-From the project root directory, run:
-```bash
-python -m http.server 8080
-```
-Then visit:
-```text
-http://localhost:8080/index.html
-```
-
 ## 📁 Project Structure
 
 ```text
@@ -120,8 +105,6 @@ $$\text{Expected Salary} = \beta_0 + \sum_{i=1}^{n} \beta_i X_i$$
 ### 2. Hiring Likelihood Model
 $$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
 - Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
-
-
-Deployrd App Link:careerml.vercel.app
+Deployed App Link:careerml.vercel.app
 $$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
 - Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
