@@ -127,3 +127,8 @@ $$\text{Expected Salary} = \beta_0 + \sum_{i=1}^{n} \beta_i X_i$$
 ### 2. Hiring Likelihood Model
 $$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
 - Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
+
+
+Deployrd App Link:careerml.vercel.app
+$$\text{Likelihood Score} = (0.50 \times \text{ExpScore}) + (0.35 \times \text{SkillScore}) + (0.15 \times \text{EduScore})$$
+- Evaluates candidate alignment against role requirements to produce an intuitive % chance for each job post.
