@@ -8,56 +8,6 @@
 // 1. EMBEDDED ML MODELS & BENCHMARK DATA
 // ==========================================
 const MODELS_DATA = {
-  salary_model: {
-    intercept: 68891.52280796214,
-    coefficients: {
-      education: -1882.864302367251,
-      experience: 26815.33636161464,
-      is_senior: 2712.4909994897657,
-      num_skills: 3708.5081272214047,
-      has_high_skill: 771.513591752584,
-      "work_mode_On-site": -8378.353745311031,
-      "work_mode_Remote": -7546.356126156458,
-      "city_tier_Karachi": -11598.50634924866,
-      "city_tier_Lahore": -3881.7169959746816,
-      "city_tier_Other": -34987.48541095988,
-      "city_tier_Rawalpindi": -23136.043121932926,
-      "job_category_Cybersecurity": -3200.195359570225,
-      "job_category_Data Science / AI / ML": -4006.8017019548606,
-      "job_category_Mobile Development": -8627.223932288038,
-      "job_category_QA / Testing": -8082.729857850396,
-      "job_category_Software Development": -2860.1548287313913,
-      "job_category_Web Development": -5908.055505052408
-    },
-    mae: 15360.43605344854,
-    r2: 0.8122284015181946,
-    feature_names: [
-      "education", "experience", "is_senior", "num_skills", "has_high_skill",
-      "work_mode_On-site", "work_mode_Remote",
-      "city_tier_Karachi", "city_tier_Lahore", "city_tier_Other", "city_tier_Rawalpindi",
-      "job_category_Cybersecurity", "job_category_Data Science / AI / ML",
-      "job_category_Mobile Development", "job_category_QA / Testing",
-      "job_category_Software Development", "job_category_Web Development"
-    ],
-    top_cities: ["Karachi", "Lahore", "Islamabad", "Rawalpindi"],
-    high_skills: ["aws", "cloud", "devops", "docker", "kubernetes", "python", "machine learning", "react"],
-    cap_sal: 301600
-  },
-  knn_scaler: {
-    mean: [144894.77, 2.96],
-    scale: [69361.05, 1.84]
-  },
-  likelihood_meta: {
-    exp_min: 0.5,
-    exp_max: 8.0,
-    skills_min: 1.0,
-    skills_max: 8.0,
-    weights: {
-      experience: 50,
-      num_skills: 35,
-      education: 15
-    }
-  },
   insights: {
     top_demanded_skills: [
       { skill: "git", count: 371 },
@@ -99,110 +49,6 @@ const MODELS_DATA = {
   }
 };
 
-// Benchmark picks matching the user's target UI screenshot
-const BENCHMARK_JOBS = [
-  {
-    id: 1,
-    title: 'Python Backend Developer',
-    company: 'TechNova',
-    city: 'Lahore',
-    workMode: 'On-site',
-    salaryMin: 150000,
-    salaryMax: 220000,
-    avgSalary: 185000,
-    expMin: 3.0,
-    expMax: 5.0,
-    matchPct: 95,
-    likelihood: 93,
-    likelihoodBreakdown: { experienceScore: 48, skillsScore: 30, educationScore: 15, totalPct: 93 },
-    matchedSkills: ['Python', 'Django', 'SQL'],
-    skillsToLearn: ['Docker', 'System Design'],
-    category: 'Software Development',
-    education: "Bachelor's",
-    sourceLogo: 'python'
-  },
-  {
-    id: 2,
-    title: 'Android Developer',
-    company: 'Google',
-    city: 'Lahore',
-    workMode: 'Hybrid',
-    salaryMin: 140000,
-    salaryMax: 200000,
-    avgSalary: 170000,
-    expMin: 2.0,
-    expMax: 5.0,
-    matchPct: 93,
-    likelihood: 87,
-    likelihoodBreakdown: { experienceScore: 46, skillsScore: 26, educationScore: 15, totalPct: 87 },
-    matchedSkills: ['Java', 'REST APIs'],
-    skillsToLearn: ['Kotlin', 'Android SDK'],
-    category: 'Mobile Development',
-    education: "Bachelor's",
-    sourceLogo: 'android'
-  },
-  {
-    id: 3,
-    title: 'Data Scientist',
-    company: 'Microsoft',
-    city: 'Lahore',
-    workMode: 'Remote',
-    salaryMin: 130000,
-    salaryMax: 190000,
-    avgSalary: 160000,
-    expMin: 2.0,
-    expMax: 4.0,
-    matchPct: 91,
-    likelihood: 80,
-    likelihoodBreakdown: { experienceScore: 45, skillsScore: 24, educationScore: 11, totalPct: 80 },
-    matchedSkills: ['Python', 'SQL', 'Data Analysis'],
-    skillsToLearn: ['Pandas', 'Machine Learning'],
-    category: 'Data Science / AI / ML',
-    education: "Master's",
-    sourceLogo: 'data'
-  },
-  {
-    id: 4,
-    title: 'System Administrator',
-    company: 'IBM',
-    city: 'Lahore',
-    workMode: 'On-site',
-    salaryMin: 120000,
-    salaryMax: 190000,
-    avgSalary: 155000,
-    expMin: 3.0,
-    expMax: 6.0,
-    matchPct: 88,
-    likelihood: 82,
-    likelihoodBreakdown: { experienceScore: 44, skillsScore: 23, educationScore: 15, totalPct: 82 },
-    matchedSkills: ['Linux', 'Networking'],
-    skillsToLearn: ['Shell Scripting', 'Virtualization'],
-    category: 'Software Development',
-    education: "Bachelor's",
-    sourceLogo: 'system'
-  },
-  {
-    id: 5,
-    title: 'Cloud Platform Engineer',
-    company: 'AWS',
-    city: 'Lahore',
-    workMode: 'Remote',
-    salaryMin: 120000,
-    salaryMax: 175000,
-    avgSalary: 147500,
-    expMin: 2.5,
-    expMax: 5.0,
-    matchPct: 86,
-    likelihood: 80,
-    likelihoodBreakdown: { experienceScore: 45, skillsScore: 20, educationScore: 15, totalPct: 80 },
-    matchedSkills: ['Cloud', 'Linux'],
-    skillsToLearn: ['AWS', 'Kubernetes', 'Terraform'],
-    category: 'Cloud / DevOps',
-    education: "Bachelor's",
-    sourceLogo: 'cloud'
-  }
-];
-
 // SVG Icons Mapping for Job Cards
 const ICONS = {
   python: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C7.5 2 7 3.9 7 3.9L7 6H12V7H5C3 7 2 8.5 2 11.5C2 14.5 3 16 5 16H6.5V14C6.5 12 8 10.5 10 10.5H14C15.5 10.5 17 9.2 17 7.5V4C17 2.5 15.5 2 12 2ZM9.5 4C10.05 4 10.5 4.45 10.5 5C10.5 5.55 10.05 6 9.5 6C8.95 6 8.5 5.55 8.5 5C8.5 4.45 8.95 4 9.5 4Z" fill="#3B82F6"/><path d="M12 22C16.5 22 17 20.1 17 20.1L17 18H12V17H19C21 17 22 15.5 22 12.5C22 9.5 21 8 19 8H17.5V10C17.5 12 16 13.5 14 13.5H10C8.5 13.5 7 14.8 7 16.5V20C7 21.5 8.5 22 12 22ZM14.5 20C13.95 20 13.5 19.55 13.5 19C13.5 18.45 13.95 18 14.5 18C15.05 18 15.5 18.45 15.5 19C15.5 19.55 15.05 20 14.5 20Z" fill="#F59E0B"/></svg>`,
@@ -228,189 +74,63 @@ let currentProfile = {
   targetSkills: ['docker', 'aws', 'fastapi']
 };
 
-let activeJobs = [...BENCHMARK_JOBS];
+let activeJobs = [];
 let selectedJob = null;
 let bootstrapJobModal = null;
+let lastAnalysis = null;
+let renderRequestId = 0;
+let renderDebounceTimer = null;
+
+function showServerErrorAlert() {
+  let alertEl = document.getElementById('serverErrorAlert');
+  if (!alertEl) {
+    alertEl = document.createElement('div');
+    alertEl.id = 'serverErrorAlert';
+    alertEl.className = 'alert alert-danger rounded-3 small fw-semibold mb-4';
+    alertEl.setAttribute('role', 'alert');
+    alertEl.innerText = "Can't reach the model server. Run: uvicorn server:app --reload";
+    const main = document.querySelector('main');
+    if (main) main.prepend(alertEl);
+  } else {
+    alertEl.classList.remove('d-none');
+    alertEl.style.display = 'block';
+  }
+}
+
+function hideServerErrorAlert() {
+  const alertEl = document.getElementById('serverErrorAlert');
+  if (alertEl) {
+    alertEl.classList.add('d-none');
+    alertEl.style.display = 'none';
+  }
+}
+
+async function fetchAnalysis(profile) {
+  const res = await fetch('/api/analyze', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(profile)
+  });
+  if (!res.ok) {
+    throw new Error(`Server returned ${res.status}`);
+  }
+  return await res.json();
+}
 
 // ==========================================
 // 3. ML PREDICTION CORE FUNCTIONS
 // ==========================================
 function predictSalary(profile) {
-  const model = MODELS_DATA.salary_model;
-  const coefs = model.coefficients;
-  const intercept = model.intercept;
-  const mae = model.mae;
-  const r2 = model.r2;
-
-  // Build feature dictionary
-  const features = {};
-  model.feature_names.forEach(f => features[f] = 0);
-
-  features['experience'] = profile.experience;
-  features['education'] = profile.education === "Master's" ? 1 : 0;
-  features['is_senior'] = profile.isSenior;
-  features['num_skills'] = profile.skills.length;
-  features['has_high_skill'] = profile.skills.some(s =>
-    model.high_skills.map(k => k.toLowerCase()).includes(s.toLowerCase())
-  ) ? 1 : 0;
-
-  const cityTier = model.top_cities.includes(profile.city) ? profile.city : 'Other';
-  const cityCol = `city_tier_${cityTier}`;
-  if (cityCol in features) features[cityCol] = 1;
-
-  const modeCol = `work_mode_${profile.workMode}`;
-  if (modeCol in features) features[modeCol] = 1;
-
-  const catCol = `job_category_${profile.category}`;
-  if (catCol in features) features[catCol] = 1;
-
-  // Linear Regression Dot Product
-  let expected = intercept;
-  for (const [col, coef] of Object.entries(coefs)) {
-    expected += coef * (features[col] || 0);
-  }
-
-  // Quantile bounds
-  if (expected > model.cap_sal) expected = model.cap_sal;
-  if (expected < 60000) expected = 60000;
-
-  const expectedSalary = Math.round(expected);
-  const minSalary = Math.max(50000, Math.round(expectedSalary - mae * 2.5));
-  const maxSalary = Math.round(expectedSalary + mae * 2.5);
-  const medianSalary = Math.round(expectedSalary / 5000) * 5000;
-  const confidence = Math.round(r2 * 100);
-
-  // Skill impacts
-  const skillImpacts = [
-    { skill: 'Python', impactPct: 95 },
-    { skill: 'SQL', impactPct: 85 },
-    { skill: 'Django', impactPct: 80 }
-  ];
-
-  if (profile.skills.length > 0) {
-    const knownWeights = {
-      python: 95, sql: 85, django: 80, aws: 92, docker: 88,
-      kubernetes: 90, react: 86, 'machine learning': 94,
-      'system design': 89, fastapi: 82, java: 84
-    };
-    const customImpacts = profile.skills.slice(0, 4).map(s => {
-      const lower = s.toLowerCase();
-      const weight = knownWeights[lower] || Math.floor(75 + (lower.length * 3) % 20);
-      const cap = s.charAt(0).toUpperCase() + s.slice(1);
-      return { skill: cap, impactPct: Math.min(98, weight) };
-    });
-    if (customImpacts.length >= 3) {
-      skillImpacts.splice(0, skillImpacts.length, ...customImpacts);
-    }
-  }
-
-  return {
-    expectedSalary,
-    minSalary,
-    maxSalary,
-    medianSalary,
-    confidence,
-    skillImpacts
-  };
+  return lastAnalysis ? lastAnalysis.salary : {};
 }
 
-function calculateJobLikelihood(profile, job) {
-  const expMin = job.expMin || 1;
-  const expMax = job.expMax || 5;
-  let expScore = 0;
-  if (profile.experience >= expMin && profile.experience <= expMax + 1.5) {
-    expScore = 48;
-  } else if (profile.experience < expMin) {
-    const ratio = profile.experience / Math.max(1, expMin);
-    expScore = Math.round(ratio * 40);
-  } else {
-    expScore = 44;
-  }
-
-  const matchedCount = (job.matchedSkills || []).length;
-  const toLearnCount = (job.skillsToLearn || []).length;
-  const totalSkills = Math.max(1, matchedCount + toLearnCount);
-  const skillRatio = matchedCount / totalSkills;
-  const skillsScore = Math.round(skillRatio * 35);
-
-  let eduScore = 15;
-  if (job.education && job.education.toLowerCase().includes("master") && profile.education !== "Master's") {
-    eduScore = 11;
-  }
-
-  const totalPct = Math.min(97, Math.max(35, expScore + skillsScore + eduScore));
-
-  return {
-    likelihood: totalPct,
-    breakdown: {
-      experienceScore: expScore,
-      skillsScore: skillsScore,
-      educationScore: eduScore,
-      totalPct: totalPct
-    }
-  };
-}
+function calculateJobLikelihood(profile, job) {}
 
 function getCandidateLikelihood(profile) {
-  if (profile.name === 'Ali' && profile.experience === 3.5 && profile.skills.length >= 3) {
-    return 78;
-  }
-  const meta = MODELS_DATA.likelihood_meta;
-  const expNorm = Math.min(1, Math.max(0, (profile.experience - meta.exp_min) / (meta.exp_max - meta.exp_min)));
-  const skillsNorm = Math.min(1, Math.max(0, (profile.skills.length - meta.skills_min) / (meta.skills_max - meta.skills_min)));
-  const eduNorm = profile.education === "Master's" ? 1 : 0;
-
-  const score = Math.round(
-    expNorm * meta.weights.experience +
-    skillsNorm * meta.weights.num_skills +
-    eduNorm * meta.weights.education
-  );
-  return Math.max(35, Math.min(96, Math.round(score * 1.7)));
+  return lastAnalysis ? lastAnalysis.likelihood : 0;
 }
 
-function getJobPersona(profile) {
-  let clusterId = 2;
-  let clusterName = 'Mid-Level Specialist';
-
-  if (profile.experience < 2) {
-    clusterId = 0;
-    clusterName = 'Entry / Junior Level';
-  } else if (profile.experience >= 5 || profile.isSenior === 1) {
-    clusterId = 1;
-    clusterName = 'Lead / Senior Specialist';
-  }
-
-  let title = 'Python Backend & Systems Specialist';
-  let tags = ['Python', 'Django', 'SQL', 'System Design'];
-  let description = 'A skilled backend developer who builds scalable web applications and works with data-driven systems.';
-
-  const roleLower = profile.targetRole.toLowerCase();
-  if (roleLower.includes('data') || roleLower.includes('machine') || roleLower.includes('ai')) {
-    title = 'AI & Data Science Specialist';
-    tags = ['Python', 'Machine Learning', 'Pandas', 'Deep Learning'];
-    description = 'An analytical problem-solver developing machine learning models and data pipelines.';
-  } else if (roleLower.includes('cloud') || roleLower.includes('devops')) {
-    title = 'Cloud & DevOps Systems Engineer';
-    tags = ['AWS', 'Docker', 'Kubernetes', 'CI/CD'];
-    description = 'An infrastructure architect designing resilient, scalable cloud architectures.';
-  } else if (roleLower.includes('mobile') || roleLower.includes('android') || roleLower.includes('flutter')) {
-    title = 'Mobile App Engineering Specialist';
-    tags = ['Flutter', 'Android', 'Kotlin', 'Mobile UI'];
-    description = 'A creative mobile specialist building high-performance cross-platform applications.';
-  } else if (roleLower.includes('frontend') || roleLower.includes('react')) {
-    title = 'Modern Frontend & UI Engineer';
-    tags = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'];
-    description = 'A visual frontend craftsman engineering fluid and accessible user experiences.';
-  }
-
-  return {
-    title,
-    tags,
-    description,
-    clusterId,
-    clusterName
-  };
-}
+function getJobPersona(profile) {}
 
 // ==========================================
 // 4. TAB NAVIGATION & VIEW SWITCHING
@@ -465,92 +185,133 @@ function closeMobileSidebar() {
 // ==========================================
 // 5. VIEW RENDERERS
 // ==========================================
-function renderAll() {
-  const salaryPred = predictSalary(currentProfile);
-  const likelihood = getCandidateLikelihood(currentProfile);
-  const persona = getJobPersona(currentProfile);
-
-  // 1. Top Navbar User Info
-  document.getElementById('navUserName').innerText = currentProfile.name;
-  document.getElementById('navUserSub').innerText = `${currentProfile.city} • ${currentProfile.experience}y exp`;
-
-  // 2. Dashboard View
-  document.getElementById('dashWelcomeTitle').innerText = `Welcome back, ${currentProfile.name}!`;
-  document.getElementById('dashSalaryRange').innerText = `PKR ${Math.round(salaryPred.minSalary / 1000)}K – ${Math.round(salaryPred.maxSalary / 1000)}K`;
-  
-  // Donut chart calculation (Circumference: 2 * Math.PI * 38 = 238.76)
-  const donutCircle = document.getElementById('dashDonutCircle');
-  const dashDonutPct = document.getElementById('dashDonutPct');
-  const circumference = 238.76;
-  const offset = circumference * (1 - likelihood / 100);
-  if (donutCircle) donutCircle.setAttribute('stroke-dashoffset', offset.toFixed(2));
-  if (dashDonutPct) dashDonutPct.innerText = `${likelihood}%`;
-
-  document.getElementById('dashSnapshotPctText').innerText = `${likelihood}% hiring likelihood`;
-  document.getElementById('dashSnapshotRole').innerText = currentProfile.targetRole;
-
-  // 3. Salary Prediction View
-  document.getElementById('heroSalaryRange').innerHTML = `PKR ${salaryPred.minSalary.toLocaleString()} – ${salaryPred.maxSalary.toLocaleString()} <span class="fs-6 fw-normal text-muted">/yr</span>`;
-  document.getElementById('heroMedianBadge').innerText = `Median: PKR ${salaryPred.medianSalary.toLocaleString()}`;
-
-  document.getElementById('kfExp').innerText = `${currentProfile.experience} Years`;
-  document.getElementById('kfCity').innerText = currentProfile.city;
-  document.getElementById('kfRole').innerText = currentProfile.targetRole;
-
-  // Skill Impact Bars
-  const skillImpactContainer = document.getElementById('skillImpactList');
-  if (skillImpactContainer) {
-    skillImpactContainer.innerHTML = salaryPred.skillImpacts.map(si => `
-      <div class="mb-3">
-        <div class="d-flex justify-content-between small fw-bold mb-1">
-          <span>${si.skill}</span>
-          <span>${si.impactPct}%</span>
-        </div>
-        <div class="progress" style="height: 8px;">
-          <div class="progress-bar bg-primary rounded-pill" style="width: ${si.impactPct}%;"></div>
-        </div>
-      </div>
-    `).join('');
+async function renderAll() {
+  if (renderDebounceTimer) {
+    clearTimeout(renderDebounceTimer);
   }
+  return new Promise((resolve) => {
+    renderDebounceTimer = setTimeout(async () => {
+      const currentId = ++renderRequestId;
+      try {
+        const data = await fetchAnalysis(currentProfile);
+        if (currentId !== renderRequestId) {
+          resolve();
+          return;
+        }
+        hideServerErrorAlert();
+        lastAnalysis = data;
 
-  // 4. Top 5 Picks View
-  renderTopPicks();
+        const salaryPred = data.salary;
+        const likelihood = data.likelihood;
+        activeJobs = data.picks || [];
 
-  // 5. Job Persona View
-  document.getElementById('personaTitle').innerText = persona.title;
-  document.getElementById('personaClusterBadge').innerText = persona.clusterName;
-  document.getElementById('personaDesc').innerText = persona.description;
-  const skillsPills = document.getElementById('personaSkillsPills');
-  if (skillsPills) {
-    skillsPills.innerHTML = persona.tags.map(t => `
-      <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 small">${t}</span>
-    `).join('');
-  }
+        // 1. Top Navbar User Info
+        document.getElementById('navUserName').innerText = currentProfile.name;
+        document.getElementById('navUserSub').innerText = `${currentProfile.city} • ${currentProfile.experience}y exp`;
 
-  // 6. Market Insights View
-  renderMarketInsights();
+        // 2. Dashboard View
+        document.getElementById('dashWelcomeTitle').innerText = `Welcome back, ${currentProfile.name}!`;
+        document.getElementById('dashSalaryRange').innerText = `PKR ${Math.round(salaryPred.minSalary / 1000)}K – ${Math.round(salaryPred.maxSalary / 1000)}K`;
+        
+        // Donut chart calculation (Circumference: 2 * Math.PI * 38 = 238.76)
+        const donutCircle = document.getElementById('dashDonutCircle');
+        const dashDonutPct = document.getElementById('dashDonutPct');
+        const circumference = 238.76;
+        const offset = circumference * (1 - likelihood / 100);
+        if (donutCircle) donutCircle.setAttribute('stroke-dashoffset', offset.toFixed(2));
+        if (dashDonutPct) dashDonutPct.innerText = `${likelihood}%`;
 
-  // 7. Profile Form Sync
-  syncProfileForm();
+        document.getElementById('dashSnapshotPctText').innerText = `${likelihood}% hiring likelihood`;
+        document.getElementById('dashSnapshotRole').innerText = currentProfile.targetRole;
 
-  // 8. Chat Context Strip
-  document.getElementById('chatContextRole').innerText = `${currentProfile.targetRole} • ${currentProfile.city}`;
-  document.getElementById('chatContextSalary').innerText = `Target: PKR ${Math.round(salaryPred.medianSalary / 1000)}k`;
+        // 3. Salary Prediction View
+        document.getElementById('heroSalaryRange').innerHTML = `PKR ${salaryPred.minSalary.toLocaleString()} – ${salaryPred.maxSalary.toLocaleString()} <span class="fs-6 fw-normal text-muted">/yr</span>`;
+        document.getElementById('heroMedianBadge').innerText = `Median: PKR ${salaryPred.medianSalary.toLocaleString()}`;
+
+        document.getElementById('kfExp').innerText = `${currentProfile.experience} Years`;
+        document.getElementById('kfCity').innerText = currentProfile.city;
+        document.getElementById('kfRole').innerText = currentProfile.targetRole;
+
+        // Skill Impact Bars
+        const skillImpactContainer = document.getElementById('skillImpactList');
+        if (skillImpactContainer && salaryPred.skillImpacts) {
+          skillImpactContainer.innerHTML = salaryPred.skillImpacts.map(si => `
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>${si.skill}</span>
+                <span>${si.impactPct}%</span>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-primary rounded-pill" style="width: ${si.impactPct}%;"></div>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 4. Top 5 Picks View
+        renderTopPicks();
+
+        // 5. Job Persona View
+        const personaCategory = (data.persona && data.persona.category) || 'Software Development';
+        const clusterName = (data.persona && data.persona.clusterName) || 'Mid-Level Specialist';
+
+        let title = 'Python Backend & Systems Specialist';
+        let tags = ['Python', 'Django', 'SQL', 'System Design'];
+        let description = 'A skilled backend developer who builds scalable web applications and works with data-driven systems.';
+
+        if (personaCategory === 'Data Science / AI / ML') {
+          title = 'AI & Data Science Specialist';
+          tags = ['Python', 'Machine Learning', 'Pandas', 'Deep Learning'];
+          description = 'An analytical problem-solver developing machine learning models and data pipelines.';
+        } else if (personaCategory === 'Cloud / DevOps') {
+          title = 'Cloud & DevOps Systems Engineer';
+          tags = ['AWS', 'Docker', 'Kubernetes', 'CI/CD'];
+          description = 'An infrastructure architect designing resilient, scalable cloud architectures.';
+        } else if (personaCategory === 'Mobile Development') {
+          title = 'Mobile App Engineering Specialist';
+          tags = ['Flutter', 'Android', 'Kotlin', 'Mobile UI'];
+          description = 'A creative mobile specialist building high-performance cross-platform applications.';
+        } else if (personaCategory === 'Web Development') {
+          title = 'Modern Frontend & UI Engineer';
+          tags = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'];
+          description = 'A visual frontend craftsman engineering fluid and accessible user experiences.';
+        }
+
+        document.getElementById('personaTitle').innerText = title;
+        document.getElementById('personaClusterBadge').innerText = clusterName;
+        document.getElementById('personaDesc').innerText = description;
+        const skillsPills = document.getElementById('personaSkillsPills');
+        if (skillsPills) {
+          skillsPills.innerHTML = tags.map(t => `
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-1.5 small">${t}</span>
+          `).join('');
+        }
+
+        // 6. Market Insights View
+        renderMarketInsights();
+
+        // 7. Profile Form Sync
+        syncProfileForm();
+
+        // 8. Chat Context Strip
+        document.getElementById('chatContextRole').innerText = `${currentProfile.targetRole} • ${currentProfile.city}`;
+        document.getElementById('chatContextSalary').innerText = `Target: PKR ${Math.round(salaryPred.medianSalary / 1000)}k`;
+        resolve();
+      } catch (err) {
+        if (currentId !== renderRequestId) {
+          resolve();
+          return;
+        }
+        showServerErrorAlert();
+        resolve();
+      }
+    }, 250);
+  });
 }
 
 function renderTopPicks() {
   const container = document.getElementById('topPicksContainer');
   if (!container) return;
-
-  // Update dynamic likelihood for benchmark jobs
-  activeJobs = BENCHMARK_JOBS.map(job => {
-    const lData = calculateJobLikelihood(currentProfile, job);
-    return {
-      ...job,
-      likelihood: lData.likelihood,
-      likelihoodBreakdown: lData.breakdown
-    };
-  });
 
   container.innerHTML = activeJobs.map((job, index) => {
     const iconSvg = ICONS[job.sourceLogo] || ICONS.python;
@@ -816,12 +577,14 @@ function addCurrentSkill() {
     currentProfile.skills.push(val);
     input.value = '';
     renderSkillChips();
+    renderAll();
   }
 }
 
 function removeCurrentSkill(skill) {
   currentProfile.skills = currentProfile.skills.filter(s => s !== skill);
   renderSkillChips();
+  renderAll();
 }
 
 function addTargetSkill() {
@@ -831,19 +594,22 @@ function addTargetSkill() {
     currentProfile.targetSkills.push(val);
     input.value = '';
     renderSkillChips();
+    renderAll();
   }
 }
 
 function removeTargetSkill(skill) {
   currentProfile.targetSkills = currentProfile.targetSkills.filter(s => s !== skill);
   renderSkillChips();
+  renderAll();
 }
 
 function saveProfileForm(event) {
   event.preventDefault();
   currentProfile.name = document.getElementById('inputName').value.trim() || 'Ali';
   currentProfile.targetRole = document.getElementById('inputTargetRole').value.trim() || 'Python Backend Developer';
-  currentProfile.experience = parseFloat(document.getElementById('inputExp').value) || 3.5;
+  const parsedExp = parseFloat(document.getElementById('inputExp').value);
+  currentProfile.experience = isNaN(parsedExp) ? 3.5 : parsedExp;
   currentProfile.city = document.getElementById('inputCity').value;
   currentProfile.education = document.getElementById('inputEducation').value;
   currentProfile.workMode = document.getElementById('inputWorkMode').value;
