@@ -8,7 +8,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 # Load the pickles once at startup. Only ever load files from models/.
-MODELS_DIR = "models"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 sal_data = joblib.load(os.path.join(MODELS_DIR, "salary.pkl"))
 knn_data = joblib.load(os.path.join(MODELS_DIR, "knn.pkl"))
 like_data = joblib.load(os.path.join(MODELS_DIR, "likelihood.pkl"))
